@@ -154,12 +154,17 @@ class syntax_plugin_docincluder extends DokuWiki_Syntax_Plugin {
     * @public
     * @see handle()
     */
-    function render($mode, Doku_Renderer $renderer, $data) {
+function render($mode, Doku_Renderer $renderer, $data) {
         if($mode == 'xhtml'){
             $ID = cleanID(getID());
             $text = strtr(noNS($ID),'_',' ');
-            $text2 = "template:doc:". $text;
-            $renderer->doc .= $renderer->render_text(rawWiki($text2), 'xhtml');
+            $text2 = "template:doc:{$text}";
+            if (rawWiki($text2) == '') {
+                $renderer->doc .= $renderer->render_text("Documentation not found. You can [[{$text2}?do=edit|create]] it though.", 'xhtml');
+            }
+            else {
+                $renderer->doc .= $renderer->render_text(rawWiki($text2), 'xhtml');
+            }
             return true;
         }
         return false;
