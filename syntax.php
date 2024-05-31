@@ -160,7 +160,7 @@ function render($mode, Doku_Renderer $renderer, $data) {
             $text = strtr(noNS($ID),'_',' ');
             $text2 = "template:doc:{$text}";
             if (rawWiki($text2) == '') {
-                $renderer->doc .= $renderer->render_text("Documentation not found. You can [[{$text2}?do=edit|create]] it though.", 'xhtml');
+                $renderer->doc .= $renderer->render_text($this->getLang('missing_argument'), 'xhtml');
             }
             else {
                 $renderer->doc .= $renderer->render_text(rawWiki($text2), 'xhtml');
