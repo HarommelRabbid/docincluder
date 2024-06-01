@@ -1,5 +1,5 @@
 base   docincluder
 author Harommel Rabbid
-date   2024-05-31
+date   2024-06-01
 name   Documentation Includer
 desc   Includes documentation pages for templates (template:doc) into the "Documentation" template. Note that this extension was developed specifically for Lemming DokuWiki.
