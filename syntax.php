@@ -160,7 +160,7 @@ function render($mode, Doku_Renderer $renderer, $data) {
             $text = strtr(noNS($ID),'_',' ');
             $text2 = "template:doc:{$text}";
             if (rawWiki($text2) == '') {
-                $renderer->doc .= $renderer->render_text($this->getLang('missing_argument'), 'xhtml');
+                $renderer->doc .= $renderer->render_text($this->getLang('no_doc'), 'xhtml');
             }
             else {
                 $renderer->doc .= $renderer->render_text(rawWiki($text2), 'xhtml');
